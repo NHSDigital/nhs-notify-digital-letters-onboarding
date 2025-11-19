@@ -2,6 +2,7 @@ $schema: https://notify.nhs.uk/fhir/schemas/common/2025-11-draft/nhs-notify-docu
 title: NHS Notify DocumentReference Schema
 description: A reference to a document for submission to NHS Notify. Provides metadata about the document so that it can be discovered and managed.
 type: object
+
 required:
   - resourceType
   - id
@@ -12,6 +13,7 @@ required:
   - custodian
   - author
   - date
+  - description
 properties:
   resourceType:
     type: string
@@ -35,17 +37,7 @@ properties:
         type: array
         description: "Code defined by a terminology system"
         items:
-          type: object
-          properties:
-            system:
-              type: string
-              description: "Identity of the terminology system"
-            code:
-              type: string
-              description: "Symbol in syntax defined by the system"
-            display:
-              type: string
-              description: "Representation defined by the system"
+          $ref: "#/$defs/snomedCoding"
   subject:
     type: object
     description: "Who/what is the subject of the document"
@@ -74,6 +66,7 @@ properties:
       type: object
       required:
         - identifier
+        - display
       properties:
         identifier:
           type: object
@@ -104,6 +97,7 @@ properties:
         required:
           - system
           - value
+          - display
         properties:
           system:
             type: string
@@ -114,6 +108,10 @@ properties:
             description: "The value that is unique within the system"
             const: "C4L8E"
             $comment: "C4L8E is NHS ENGLAND: NHS NOTIFY"
+          display:
+            type: string
+            description: "Text alternative for the resource"
+            const: "NHS ENGLAND: NHS NOTIFY"         
   date:
     type: string
     description: "When this document reference was created"
@@ -150,3 +148,25 @@ properties:
               type: string
               description: "Data inline, base64ed - a stream of bytes, base64 encoded (RFC 4648)"
               pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
+
+$defs:
+  snomedCoding:
+    type: object
+    $comment: "Currently allowed SNOMED CT codes. More codes to be added (TBC)."
+    oneOf:
+      - properties:
+          system:
+            const: "http://snomed.info/sct"
+          code:
+            const: "308540004"
+          display:
+            const: "Appointment"
+        required: [system, code, display]
+      - properties:
+          system:
+            const: "http://snomed.info/sct"
+          code:
+            const: "823681000000100"
+          display:
+            const: "Outpatient appointment letter"
+        required: [system, code, display]
