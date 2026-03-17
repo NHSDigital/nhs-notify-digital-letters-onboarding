@@ -22,6 +22,9 @@ properties:
   id:
     type: string
     description: Logical id of this artifact"
+    format: uuid
+    examples:
+      - "82bfb7f3-4889-4e15-b308-bbe4e3cd431f"
   status:
     type: string
     description: "The status of the document reference (current | superseded | entered-in-error)"
@@ -90,6 +93,7 @@ properties:
     description: "Organization which maintains the document"
     required:
       - identifier
+      - display
     properties:
       identifier:
         type: object
@@ -97,7 +101,6 @@ properties:
         required:
           - system
           - value
-          - display
         properties:
           system:
             type: string
@@ -108,10 +111,10 @@ properties:
             description: "The value that is unique within the system"
             const: "C4L8E"
             $comment: "C4L8E is NHS ENGLAND: NHS NOTIFY"
-          display:
-            type: string
-            description: "Text alternative for the resource"
-            const: "NHS ENGLAND: NHS NOTIFY"         
+      display:
+        type: string
+        description: "Text alternative for the resource"
+        const: "NHS ENGLAND: NHS NOTIFY"         
   date:
     type: string
     description: "When this document reference was created"
