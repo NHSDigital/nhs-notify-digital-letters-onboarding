@@ -66,55 +66,16 @@ properties:
     type: array
     description: "Who and/or what authored the document"
     items:
-      type: object
-      required:
-        - identifier
-        - display
-      properties:
-        identifier:
-          type: object
-          description: "Logical reference, when literal reference is not known"
-          required:
-            - system
-            - value
-          properties:
-            system:
-              type: string
-              description: "The namespace for the identifier value"
-              const: "https://fhir.nhs.uk/Id/ods-organization-code"
-            value:
-              type: string
-              description: "The value that is unique within the system"
-        display:
-          type: string
-          description: "Text alternative for the resource"
+      $ref: "#/$defs/organisation"
   custodian:
-    type: object
     description: "Organization which maintains the document"
-    required:
-      - identifier
-      - display
-    properties:
-      identifier:
-        type: object
-        description: "Logical reference, when literal reference is not known"
-        required:
-          - system
-          - value
+    allOf:
+      - $ref: "#/$defs/organisation"
+      - type: object
         properties:
-          system:
-            type: string
-            description: "The namespace for the identifier value"
-            const: "https://fhir.nhs.uk/Id/ods-organization-code"
-          value:
-            type: string
-            description: "The value that is unique within the system"
-            const: "C4L8E"
-            $comment: "C4L8E is NHS ENGLAND: NHS NOTIFY"
-      display:
-        type: string
-        description: "Text alternative for the resource"
-        const: "NHS ENGLAND: NHS NOTIFY"         
+          identifier:
+            value:
+              const: "C4L8E"
   date:
     type: string
     description: "When this document reference was created"
@@ -153,6 +114,28 @@ properties:
               pattern: "^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$"
 
 $defs:
+  organisation:
+    type: object
+    required: [identifier, display]
+    properties:
+      identifier:
+        type: object
+        description: "Logical reference, when literal reference is not known"
+        required:
+          - system
+          - value
+        properties:
+          system:
+            type: string
+            description: "The namespace for the identifier value"
+            const: "https://fhir.nhs.uk/Id/ods-organization-code"
+          value:
+            type: string
+            description: "The value that is unique within the system"
+            $comment: "ODS organisation code; for example, C4L8E is NHS ENGLAND: NHS NOTIFY"
+      display:
+        type: string
+        description: "Text alternative for the resource"
   snomedCoding:
     type: object
     $comment: "Currently allowed SNOMED CT codes. More codes to be added (TBC)."
