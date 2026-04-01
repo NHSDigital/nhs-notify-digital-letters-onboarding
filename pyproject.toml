@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "nhs-notify-digital-letters-onboarding"
+version = "0.1.0"
+description = "JSON Schema for NHS Notify Digital Letters DocumentReference payloads"
+requires-python = ">=3.11"
+dependencies = [
+    "jsonschema>=4.0",
+    "PyYAML>=6.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["nhs_notify_onboarding*"]
+
+[tool.setuptools.package-data]
+nhs_notify_onboarding = ["*.yaml"]
