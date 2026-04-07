@@ -12,10 +12,6 @@ dependencies = [
     "PyYAML>=6.0",
 ]
 
-[tool.setuptools]
-packages = ["nhs_notify_onboarding"]
-include-package-data = true
-
 [tool.setuptools.packages.find]
 where = ["src"]
 
