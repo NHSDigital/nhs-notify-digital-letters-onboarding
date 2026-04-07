@@ -16,4 +16,4 @@ dependencies = [
 where = ["src"]
 
 [tool.setuptools.package-data]
-nhs_notify_onboarding = ["*.yaml"]
+nhs_notify_letters_onboarding = ["*.yaml"]

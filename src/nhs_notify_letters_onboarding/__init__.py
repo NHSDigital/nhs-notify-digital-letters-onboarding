@@ -13,7 +13,7 @@ def _get_schema() -> dict:
     global _SCHEMA
     if _SCHEMA is None:
         text = (
-            importlib.resources.files("nhs_notify_onboarding")
+            importlib.resources.files("nhs_notify_lettersonboarding")
             .joinpath("schema.yaml")
             .read_text(encoding="utf-8")
         )
