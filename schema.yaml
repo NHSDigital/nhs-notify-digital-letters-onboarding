@@ -1,4 +1,4 @@
-$schema: https://notify.nhs.uk/fhir/schemas/common/2025-11-draft/nhs-notify-document-reference.schema.json
+$schema: https://notify.nhs.uk/fhir/schemas/common/2026-11/nhs-notify-document-reference.schema.json
 title: NHS Notify DocumentReference Schema
 description: A reference to a document for submission to NHS Notify. Provides metadata about the document so that it can be discovered and managed.
 type: object
@@ -62,6 +62,22 @@ properties:
             type: string
             description: "NHS number - a 10 digit identifier for patients in the NHS"
             pattern: "^[0-9]{10}$"
+      recipientAddress:
+        type: object
+        required:
+          - lines
+          - postcode
+        properties:
+          lines:
+            type: array
+            description: "Ordered list of recipient's address lines"
+            items:
+              type: string
+              minItems: 2
+              maxItems: 5
+          postcode:
+            type: string
+            description: "Postal code for the recipient's address"
   author:
     type: array
     description: "Who and/or what authored the document"
