@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nhs-notify-digital-letters-onboarding"
-version = "0.1.0"
+version = "0.3.0"
 description = "JSON Schema for NHS Notify Digital Letters DocumentReference payloads"
 requires-python = ">=3.11"
 dependencies = [
