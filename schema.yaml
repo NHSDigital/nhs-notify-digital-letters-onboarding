@@ -71,10 +71,10 @@ properties:
           lines:
             type: array
             description: "Ordered list of recipient's address lines"
+            minItems: 2
+            maxItems: 5
             items:
               type: string
-              minItems: 2
-              maxItems: 5
           postcode:
             type: string
             description: "Postal code for the recipient's address"
