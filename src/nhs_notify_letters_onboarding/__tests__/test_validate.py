@@ -20,6 +20,14 @@ VALID_DOCUMENT_REFERENCE = {
         "identifier": {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9876543210",
+        },
+        "recipientAddress": {
+            "lines": [
+                "1 Some Street",
+                "Someville",
+                "Someshire"
+            ],
+            "postcode": "SS1 2SS"
         }
     },
     "author": [
