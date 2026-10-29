@@ -62,22 +62,34 @@ properties:
             type: string
             description: "NHS number - a 10 digit identifier for patients in the NHS"
             pattern: "^[0-9]{10}$"
-      recipientAddress:
-        type: object
-        required:
-          - lines
-          - postcode
-        properties:
-          lines:
-            type: array
-            description: "Ordered list of recipient's address lines"
-            minItems: 2
-            maxItems: 5
-            items:
-              type: string
-          postcode:
-            type: string
-            description: "Postal code for the recipient's address"
+      extension:
+        type: array
+        description: "Optional extensions. Only the recipient address extension is currently supported."
+        items:
+          type: object
+          description: "Recipient's postal address as a FHIR Address. All address lines, including town and county, go in line, in label order."
+          equired: [url, valueAddress]
+          additionalProperties: false
+          properties:
+            url:
+              const: "https://notify.nhs.uk/fhir/StructureDefinition/recipient-address"
+            valueAddress:
+              type: object
+              required: [line, postalCode]
+              additionalProperties: false
+              properties:
+                line:
+                  type: array
+                  description: "Ordered list of recipient's address lines"
+                  minItems: 2
+                  maxItems: 5
+                  items:
+                    type: string
+                    minLength: 1
+                postalCode:
+                  type: string
+                  description: "Postal code for the recipient's address"
+                  minLength: 1
   author:
     type: array
     description: "Who and/or what authored the document"

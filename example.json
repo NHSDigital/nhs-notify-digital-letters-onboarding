@@ -17,15 +17,20 @@
       "system": "https://fhir.nhs.uk/Id/nhs-number",
       "value": "9876543210"
     },
-    "recipientAddress": {
-      "lines": [
-        "5th Floor",
-        "7&8 Wellington Place",
-        "Leeds",
-        "West Yorkshire"
-      ],
-      "postcode": "LS1 4AP"
-    }
+    "extension": [
+      {
+        "url": "https://notify.nhs.uk/fhir/StructureDefinition/recipient-address",
+        "valueAddress": {
+          "line": [
+            "5th Floor",
+            "7&8 Wellington Place",
+            "Leeds",
+            "West Yorkshire"
+          ],
+          "postalCode": "LS1 4AP"
+        }
+      }
+    ]
   },
   "author": [
     {
