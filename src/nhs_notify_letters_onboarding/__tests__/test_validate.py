@@ -21,14 +21,15 @@ VALID_DOCUMENT_REFERENCE = {
             "system": "https://fhir.nhs.uk/Id/nhs-number",
             "value": "9876543210",
         },
-        "recipientAddress": {
-            "lines": [
-                "1 Some Street",
-                "Someville",
-                "Someshire"
-            ],
-            "postcode": "SS1 2SS"
-        }
+        "extension": [
+            {
+                "url": "https://notify.nhs.uk/fhir/StructureDefinition/recipient-address",
+                "valueAddress": {
+                    "line": ["1 Some Street", "Someville", "Someshire"],
+                    "postalCode": "SS1 2SS",
+                },
+            }
+        ],
     },
     "author": [
         {
