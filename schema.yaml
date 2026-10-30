@@ -68,7 +68,7 @@ properties:
         items:
           type: object
           description: "Recipient's postal address as a FHIR Address. All address lines, including town and county, go in line, in label order."
-          equired: [url, valueAddress]
+          required: [url, valueAddress]
           additionalProperties: false
           properties:
             url:
