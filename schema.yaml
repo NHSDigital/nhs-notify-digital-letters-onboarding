@@ -68,14 +68,18 @@ properties:
         items:
           type: object
           description: "Recipient's postal address as a FHIR Address. All address lines, including town and county, go in line, in label order."
-          required: [url, valueAddress]
+          required: 
+            - url
+            - valueAddress
           additionalProperties: false
           properties:
             url:
               const: "https://notify.nhs.uk/fhir/StructureDefinition/recipient-address"
             valueAddress:
               type: object
-              required: [line, postalCode]
+              required:
+                - line
+                - postalCode
               additionalProperties: false
               properties:
                 line:
